@@ -147,6 +147,11 @@ body {
     }
 }
 
+.insta-icon {
+    width: 3rem;
+    height: auto;
+}
+
 .insta-link {
     font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
     font-size: 1.5rem;
