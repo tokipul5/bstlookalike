@@ -51,8 +51,16 @@
             </div>
         </nav>
         <section class="section">
-            <h1 class="title">BTS LOOKALIKE AI TEST</h1>
-            <h2 class="subtitle">Which BST member do you look like?</h2>
+            <h1 class="mb-4 title">More features are coming soon...</h1>
+            <h2 class="subtitle">EXO LOOKALIKE</h2>
+            <h2 class="subtitle">BlACKPINK LOOKALIKE</h2>
+            <h2 class="subtitle">REDVELVET LOOKALIKE</h2>
+            <h2 class="subtitle">TWICE LOOKALIKE</h2>
+            <h3 class="mt-4 about">
+                If you have any requests about a K-pop group that you like,<br/>
+                please comment below or send me a direct message through Instagram.<br/>
+                I will make one as soon as possbile. Thank you.
+            </h3>
         </section>
         <section class="instagram">
             <div class="container mt-5 insta-cover d-flex flex-row-reverse">
@@ -65,46 +73,7 @@
             class="jsbin"
             src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
         ></script>
-        <div class="mb-3 container file-upload">
-            <div class="image-upload-wrap" style="width: 65%; margin: 0 auto;">
-                <input
-                    class="file-upload-input"
-                    type="file"
-                    onchange="readURL(this);"
-                    accept="image/*"
-                />
-                <div class="drag-text">
-                    <img src="img/upload.png" class="mt-5 upload" />
-                    <h3 class="mb-5 pt-2 upload-text">Drag your picture or click to upload!</h3>
-                </div>
-            </div>
-            <div class="file-upload-content">
-                <img class="file-upload-image" id="face-image" src="#" alt="your image" />
-                <div id="loading" class="animated bounce">
-                    <div class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <p class="text-center">AI is idenifying your BTS lookalike.</p>
-                </div>
-                <p class="result-message"></p>
-                <div id="label-container" class="d-flex flex-column justify-content-around"></div>
-
-            
-            
-                <div class="pt-3 mt-3 image-title-wrap">
-                    <button
-                        type="button p-2"
-                        class="try-again-btn"
-                        onclick="window.location.reload();"
-                    >
-                        <span class="try-again-text">Try with a different image</span>
-                    </button>
-                </div>
-                
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <div class="addthis_inline_share_toolbox_ii51"></div>
-            </div>
-        </div>
+        
         <div id="webcam-container"></div>
         <div id="disqus_thread"></div>
         <script>
@@ -253,7 +222,7 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
                         resultExplain = 'sp';
                 }
                 var title =
-                    "<div class='" + prediction[0].className + "-title'>\n" + resultTitle + '</div>';
+                    "<div class='" + prediction[0].className + "-title'>" + resultTitle + '</div>';
                 var explain = "<div class='animal-explain pt-2'>" + resultExplain + '</div>';
                 $('.result-message').html(resultTitle + resultExplain);
                 var barWidth;
