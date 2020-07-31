@@ -86,6 +86,9 @@
                     </div>
                     <p class="text-center">AI is idenifying your BTS lookalike.</p>
                 </div>
+                <div>
+                    <img scr='' width="300" height=auto id="picture">
+                </div>
                 <p class="result-message"></p>
                 <div id="label-container" class="d-flex flex-column justify-content-around"></div>
 
@@ -106,7 +109,7 @@
             </div>
         </div>
         <div id="webcam-container"></div>
-        <div id="disqus_thread"></div>
+        <div id="disqus_thread" class="ml-3 mr-3"></div>
         <script>
             /**
              *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -126,6 +129,19 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
                 (d.head || d.body).appendChild(s);
             })();
         </script>
+    
+        <script>
+            function show_image(src, width=100, height=100, alt="") {
+                var img = document.createElement("img");
+                img.src = src;
+                img.width = width;
+                img.height = height;
+                img.alt = alt;
+                
+                document.body.appendChild(img);
+            }
+        </script>
+    
         <noscript
             >Please enable JavaScript to view the
             <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript
@@ -218,44 +234,52 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
                 var image = document.getElementById('face-image');
                 const prediction = await model.predict(image, false);
                 prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
-                var resultTitle, resultExplain;
+                var resultTitle, resultExplain, picture;
                 switch (prediction[0].className) {
                     case 'Jin':
                         resultTitle = 'Jin';
-                        resultExplain = 'J';
+                        resultExplain = 'Worldwide handsome';
+                        picture = 'img/members/Jin.jpg';
                         break;
                     case 'V':
                         resultTitle = 'V';
-                        resultExplain = 'v';
+                        resultExplain = 'The MOST Handsome Face of 2017';
+                        picture = 'img/members/V.jpg';
                         break;
                     case 'Jimin':
                         resultTitle = 'Jimin';
-                        resultExplain = 'jm';
+                        resultExplain = 'The last member joined BTS';
+                        picture = 'img/members/Jimin.jpg';
                         break;
                     case 'RM':
                         resultTitle = 'RM';
-                        resultExplain = 'r';
+                        resultExplain = 'Sexy, even a brain';
+                        picture = 'img/members/RM.jpg';
                         break;
                     case 'J-Hope':
                         resultTitle = 'J-Hope';
-                        resultExplain = 'hope';
+                        resultExplain = 'Chicken noolde soup';
+                        picture = 'img/members/J-Hope.jpg';
                         break;
                     case 'Jungkook':
                         resultTitle = 'Jungkook';
-                        resultExplain = 'jk';
+                        resultExplain = 'The MOST Handsome Face of 2019';
+                        picture = 'img/members/Jungkook.jpg';
                         break;
                     case 'Suga':
                         resultTitle = 'Suga';
-                        resultExplain = 'su';
+                        resultExplain = 'Agust D';
+                        picture = 'img/members/Suga.jpg';
                         break;
                     default:
                         resultTitle = 'You are special!';
-                        resultExplain = 'sp';
+                        resultExplain = '';
                 }
+                document.getElementById("picture").src = picture;
                 var title =
-                    "<div class='" + prediction[0].className + "-title'>\n" + resultTitle + '</div>';
+                    "<div class='" + prediction[0].className + "-title'>" + resultTitle + '</div>';
                 var explain = "<div class='animal-explain pt-2'>" + resultExplain + '</div>';
-                $('.result-message').html(resultTitle + resultExplain);
+                $('.result-message').html(resultTitle + '<br/>' + resultExplain);
                 var barWidth;
                 for (let i = 0; i < maxPredictions; i++) {
                     if (prediction[i].probability.toFixed(2) > 0.1) {
